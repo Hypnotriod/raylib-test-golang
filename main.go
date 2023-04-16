@@ -31,7 +31,7 @@ func orbitalposition(texture rl.Texture2D, angle float32, distanceDelta float32,
 	return p
 }
 
-func initialize() {
+func startup() {
 	rl.InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE)
 	rl.SetTargetFPS(FPS_MAX)
 	rl.SetExitKey(0)
@@ -84,7 +84,7 @@ func loop() {
 }
 
 func main() {
-	initialize()
+	startup()
 	loop()
 	rl.CloseWindow()
 }

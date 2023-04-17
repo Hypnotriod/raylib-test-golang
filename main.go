@@ -7,7 +7,7 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-const WINDOW_TITLE string = "test"
+const WINDOW_TITLE string = "Ninja"
 const SCREEN_WIDTH int32 = 800
 const SCREEN_HEIGHT int32 = 480
 const FPS_MAX int32 = 60
@@ -15,6 +15,9 @@ const SCREEN_WIDTH_HALF int32 = SCREEN_WIDTH / 2
 const SCREEN_HEIGHT_HALF int32 = SCREEN_HEIGHT / 2
 const SCREEN_WIDTH_QUATER int32 = SCREEN_WIDTH / 4
 const SCREEN_HEIGHT_QUATER int32 = SCREEN_HEIGHT / 4
+
+//go:embed resources/icon32.png
+var icon32 []byte
 
 //go:embed resources/kitty.png
 var kittyBytes []byte
@@ -36,6 +39,7 @@ func startup() {
 	rl.SetTargetFPS(FPS_MAX)
 	rl.SetExitKey(0)
 	rl.HideCursor()
+	rl.SetWindowIcon(*rl.LoadImageFromMemory(".png", icon32, int32(len(icon32))))
 
 	txrSuperhero = rl.LoadTextureFromImage(rl.LoadImageFromMemory(".png", kittyBytes, int32(len(kittyBytes))))
 	txrKitty = rl.LoadTextureFromImage(rl.LoadImageFromMemory(".png", superheroBytes, int32(len(superheroBytes))))

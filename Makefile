@@ -1,5 +1,13 @@
-clean:
-	rm -r ./release
+PROGRAM_NAME=program.exe
 
-release: clean
-	go build -ldflags "-H=windowsgui" -o ./release/program.exe .
+clean:
+	rm -rf ./release && rm -rf *.syso
+
+winres-init:
+	go-winres init
+
+winres-make:
+	go-winres make
+
+release: clean winres-make
+	go build -ldflags "-H=windowsgui" -o ./release/${PROGRAM_NAME} .

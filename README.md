@@ -1,5 +1,5 @@
 # raylib template for VS Code on Windows using golang
-This is the template for `VS Code` on `Windows` of `raylib` C graphic library using golang.  
+This is the template for `VS Code` on `Windows` of `raylib` C graphic library using `golang` with [gen2brain/raylib-go](https://github.com/gen2brain/raylib-go/) bindings.  
 
 ## Setup environment
 * Download and install [Go](https://go.dev/doc/install)

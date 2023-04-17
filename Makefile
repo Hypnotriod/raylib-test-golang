@@ -1,4 +1,4 @@
-PROGRAM_NAME=program.exe
+FILE_NAME=program.exe
 
 clean:
 	rm -rf ./release && rm -rf *.syso
@@ -10,4 +10,4 @@ winres-make:
 	go-winres make
 
 release: clean winres-make
-	go build -ldflags "-s -w -H=windowsgui" -o ./release/${PROGRAM_NAME} .
+	go build -ldflags "-s -w -H=windowsgui" -o ./release/${FILE_NAME} .

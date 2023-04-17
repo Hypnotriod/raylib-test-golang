@@ -3,8 +3,8 @@ This is the template for `VS Code` on `Windows` of `raylib` C graphic library us
 
 ## Setup environment
 * Download and install [Go](https://go.dev/doc/install)
-* Download and install [raylib_installer_vX.X.mingw.64bit.exe](https://github.com/raysan5/raylib/releases).  
-* Add `C:\raylib\w64devkit\bin` value to `PATH` in *system environment variables* to provide gcc compiler to Go.  
+* Download latest [w64devkit-1.XX.X.zip](https://github.com/skeeto/w64devkit/releases/latest) and unzip it to `C:\` (`C:\w64devkit` folder should appear).  
+* Add `C:\w64devkit\bin` value to `PATH` in *system environment variables* to provide gcc compiler to Go.  
 * Add system environment variable `CGO_ENABLED` with value `1`
 
 ## Run and Debug

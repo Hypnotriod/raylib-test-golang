@@ -27,7 +27,7 @@ var txrKitty rl.Texture2D
 var superheroBytes []byte
 var txrSuperhero rl.Texture2D
 
-func orbitalposition(texture rl.Texture2D, angle float32, distanceDelta float32, mousePosition rl.Vector2) rl.Vector2 {
+func orbitalPosition(texture rl.Texture2D, angle float32, distanceDelta float32, mousePosition rl.Vector2) rl.Vector2 {
 	p := rl.Vector2{}
 	p.X = float32(math.Cos(float64(angle)))*float32(texture.Width)/2*distanceDelta + mousePosition.X - float32(texture.Width)/2
 	p.Y = float32(math.Sin(float64(angle)))*float32(texture.Width)/2*distanceDelta/2 + mousePosition.Y - float32(texture.Height)/2
@@ -67,8 +67,8 @@ func loop() {
 
 		mousePosition = rl.GetMousePosition()
 
-		superheroPosition = orbitalposition(txrSuperhero, angle, distanceDelta, mousePosition)
-		kittyPosition = orbitalposition(txrKitty, angle+math.Pi, distanceDelta, mousePosition)
+		superheroPosition = orbitalPosition(txrSuperhero, angle, distanceDelta, mousePosition)
+		kittyPosition = orbitalPosition(txrKitty, angle+math.Pi, distanceDelta, mousePosition)
 		scaleDelta = (superheroPosition.Y - kittyPosition.Y) * 0.001
 
 		if superheroPosition.Y < kittyPosition.Y {

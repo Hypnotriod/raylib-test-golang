@@ -10,4 +10,4 @@ winres-make:
 	go-winres make
 
 release: clean winres-make
-	go build -ldflags "-H=windowsgui" -o ./release/${PROGRAM_NAME} .
+	go build -ldflags "-s -w -H=windowsgui" -o ./release/${PROGRAM_NAME} .

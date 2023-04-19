@@ -17,15 +17,15 @@ const SCREEN_WIDTH_QUARTER int32 = SCREEN_WIDTH / 4
 const SCREEN_HEIGHT_QUARTER int32 = SCREEN_HEIGHT / 4
 
 //go:embed resources/icon32.png
-var icon32 []byte
+var icon32PNG []byte
 
 //go:embed resources/kitty.png
-var kittyBytes []byte
-var txrKitty rl.Texture2D
+var kittyPNG []byte
+var kittyTexture rl.Texture2D
 
 //go:embed resources/superhero.png
-var superheroBytes []byte
-var txrSuperhero rl.Texture2D
+var superheroPNG []byte
+var superheroTexture rl.Texture2D
 
 func orbitalPosition(texture rl.Texture2D, angle float32, distanceDelta float32, mousePosition rl.Vector2) rl.Vector2 {
 	p := rl.Vector2{}
@@ -39,10 +39,10 @@ func startup() {
 	rl.SetTargetFPS(FPS_MAX)
 	rl.SetExitKey(0)
 	rl.HideCursor()
-	rl.SetWindowIcon(*rl.LoadImageFromMemory(".png", icon32, int32(len(icon32))))
+	rl.SetWindowIcon(*rl.LoadImageFromMemory(".png", icon32PNG, int32(len(icon32PNG))))
 
-	txrSuperhero = rl.LoadTextureFromImage(rl.LoadImageFromMemory(".png", kittyBytes, int32(len(kittyBytes))))
-	txrKitty = rl.LoadTextureFromImage(rl.LoadImageFromMemory(".png", superheroBytes, int32(len(superheroBytes))))
+	superheroTexture = rl.LoadTextureFromImage(rl.LoadImageFromMemory(".png", kittyPNG, int32(len(kittyPNG))))
+	kittyTexture = rl.LoadTextureFromImage(rl.LoadImageFromMemory(".png", superheroPNG, int32(len(superheroPNG))))
 }
 
 func loop() {
@@ -67,20 +67,20 @@ func loop() {
 
 		mousePosition = rl.GetMousePosition()
 
-		superheroPosition = orbitalPosition(txrSuperhero, angle, distanceDelta, mousePosition)
-		kittyPosition = orbitalPosition(txrKitty, angle+math.Pi, distanceDelta, mousePosition)
+		superheroPosition = orbitalPosition(superheroTexture, angle, distanceDelta, mousePosition)
+		kittyPosition = orbitalPosition(kittyTexture, angle+math.Pi, distanceDelta, mousePosition)
 		scaleDelta = (superheroPosition.Y - kittyPosition.Y) * 0.001
 
 		if superheroPosition.Y < kittyPosition.Y {
-			rl.DrawTextureEx(txrSuperhero, superheroPosition, 0, 1+scaleDelta, rl.White)
+			rl.DrawTextureEx(superheroTexture, superheroPosition, 0, 1+scaleDelta, rl.White)
 			rl.DrawCircle(int32(mousePosition.X), int32(mousePosition.Y), float32(SCREEN_HEIGHT_QUARTER), rl.Red)
 			rl.DrawText("Ninja", int32(mousePosition.X)-30, int32(mousePosition.Y)-15, 30, rl.White)
-			rl.DrawTextureEx(txrKitty, kittyPosition, 0, 1-scaleDelta, rl.White)
+			rl.DrawTextureEx(kittyTexture, kittyPosition, 0, 1-scaleDelta, rl.White)
 		} else {
-			rl.DrawTextureEx(txrKitty, kittyPosition, 0, 1-scaleDelta, rl.White)
+			rl.DrawTextureEx(kittyTexture, kittyPosition, 0, 1-scaleDelta, rl.White)
 			rl.DrawCircle(int32(mousePosition.X), int32(mousePosition.Y), float32(SCREEN_HEIGHT_QUARTER), rl.Red)
 			rl.DrawText("Ninja", int32(mousePosition.X)-30, int32(mousePosition.Y)-15, 30, rl.White)
-			rl.DrawTextureEx(txrSuperhero, superheroPosition, 0, 1+scaleDelta, rl.White)
+			rl.DrawTextureEx(superheroTexture, superheroPosition, 0, 1+scaleDelta, rl.White)
 		}
 
 		rl.EndDrawing()

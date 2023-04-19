@@ -13,8 +13,8 @@ const SCREEN_HEIGHT int32 = 480
 const FPS_MAX int32 = 60
 const SCREEN_WIDTH_HALF int32 = SCREEN_WIDTH / 2
 const SCREEN_HEIGHT_HALF int32 = SCREEN_HEIGHT / 2
-const SCREEN_WIDTH_QUATER int32 = SCREEN_WIDTH / 4
-const SCREEN_HEIGHT_QUATER int32 = SCREEN_HEIGHT / 4
+const SCREEN_WIDTH_QUARTER int32 = SCREEN_WIDTH / 4
+const SCREEN_HEIGHT_QUARTER int32 = SCREEN_HEIGHT / 4
 
 //go:embed resources/icon32.png
 var icon32 []byte
@@ -73,12 +73,12 @@ func loop() {
 
 		if superheroPosition.Y < kittyPosition.Y {
 			rl.DrawTextureEx(txrSuperhero, superheroPosition, 0, 1+scaleDelta, rl.White)
-			rl.DrawCircle(int32(mousePosition.X), int32(mousePosition.Y), float32(SCREEN_HEIGHT_QUATER), rl.Red)
+			rl.DrawCircle(int32(mousePosition.X), int32(mousePosition.Y), float32(SCREEN_HEIGHT_QUARTER), rl.Red)
 			rl.DrawText("Ninja", int32(mousePosition.X)-30, int32(mousePosition.Y)-15, 30, rl.White)
 			rl.DrawTextureEx(txrKitty, kittyPosition, 0, 1-scaleDelta, rl.White)
 		} else {
 			rl.DrawTextureEx(txrKitty, kittyPosition, 0, 1-scaleDelta, rl.White)
-			rl.DrawCircle(int32(mousePosition.X), int32(mousePosition.Y), float32(SCREEN_HEIGHT_QUATER), rl.Red)
+			rl.DrawCircle(int32(mousePosition.X), int32(mousePosition.Y), float32(SCREEN_HEIGHT_QUARTER), rl.Red)
 			rl.DrawText("Ninja", int32(mousePosition.X)-30, int32(mousePosition.Y)-15, 30, rl.White)
 			rl.DrawTextureEx(txrSuperhero, superheroPosition, 0, 1+scaleDelta, rl.White)
 		}

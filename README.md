@@ -2,13 +2,14 @@
 This is the template for `VS Code` on `Windows` of `raylib` C graphic library using `golang` with [gen2brain/raylib-go](https://github.com/gen2brain/raylib-go/) bindings.  
 
 ## Setup environment
+* Download and install [VSCode](https://code.visualstudio.com/download)
 * Download and install [Go](https://go.dev/doc/install)
 * Download latest [w64devkit-1.XX.X.zip](https://github.com/skeeto/w64devkit/releases/latest) and unzip it to `C:\` (`C:\w64devkit` folder should appear).  
-* Add `C:\w64devkit\bin` value to `PATH` in *system environment variables* to provide gcc compiler to Go.  
-* Add system environment variable `CGO_ENABLED` with value `1`
+* Add `C:\w64devkit\bin` value to `PATH` in *system environment variables* to provide *gcc* compiler to Go and *make* utility for build process.  
+* Also add system environment variable `CGO_ENABLED` with value `1`
 
 ## Run and Debug
-* Open `main.go` file in VSCode and press `F5` to run debug. For the first time VSCode may prompt you to install `go tools`, so go for it:)
+* Open project folder (*File* -> *Open Folder...*) in VSCode and press `F5` to run debug. For the first time VSCode may prompt you to install `go tools`, so go for it:)
 
 ## Build Release
 * `Ctrl` + `~` to open terminal window in VSCode.
